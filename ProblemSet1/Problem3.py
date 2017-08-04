@@ -8,23 +8,13 @@ In the case of ties, print the first substring. For example, if s = 'abcbcd', th
 
 Longest substring in alphabetical order is: abc
 """
-length = len(s)
-maxresult = 1
-maxi = 0
-maxj = 1
-current = 0
-indexi = 0
-indexj = 0
-for i in range(length):
-    current = 0
-    indexi = i
-    indexj = i + 1
-    while indexj < length and s[indexj] >= s[indexi]:
-        indexi = indexj
-        indexj = indexi + 1
-        current += 1
-    if current > maxresult:
-        maxi = i
-        maxj = indexj
-        maxresult = current
-print("Longest substring in alphabetical order is: ",s[maxi:maxj])
+# s = 'xdfhyzfdlnskoyeqphtjbhzm'
+maxstring = ""  # 保存最长字符串
+index = 0  # 保存当前位置
+for i in range(len(s)):
+    index = i
+    while index < len(s) - 1 and s[index + 1] >= s[index]:
+        index += 1
+    if index - i + 1 > len(maxstring):
+        maxstring = s[i:index + 1]
+print("Longest substring in alphabetical order is: ", maxstring)
